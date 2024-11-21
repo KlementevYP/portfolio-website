@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>vCard - Personal Portfolio</title>
+  <title>Klementev Yaroslav</title>
 
   <!--
     - favicon
@@ -22,7 +22,7 @@
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -42,13 +42,13 @@
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="./static/images/my-avatar.png" alt="Om Kharche" width="80">
+          <img src="./static/images/my-avatar.png" alt="{{ person.name }}" width="80">
         </figure>
 
         <div class="info-content">
-          <h1 class="name" title="Om Kharche">Om Kharche</h1>
+          <h1 class="name">{{ person.name }}</h1>
 
-          <p class="title">Full Stack Developer</p>
+          <p class="title">{{ person.profession }}</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
@@ -72,9 +72,9 @@
             </div>
 
             <div class="contact-info">
-              <p class="contact-title">Email</p>
+              <p class="contact-title">Почта</p>
 
-              <a href="mailto:omtestmail@gmail.com" class="contact-link">omtestmail@gmail.com</a>
+              <a href="mailto:{{ person.email }}" class="contact-link">{{ person.email }}</a>
             </div>
 
           </li>
@@ -86,9 +86,9 @@
             </div>
 
             <div class="contact-info">
-              <p class="contact-title">Phone</p>
+              <p class="contact-title">Телефон</p>
 
-              <a href="tel:+12133522795" class="contact-link">+91 935960743</a>
+              <a href="tel:{{ person.phone }}" class="contact-link">{{ person.phone }}</a>
             </div>
 
           </li>
@@ -100,9 +100,9 @@
             </div>
 
             <div class="contact-info">
-              <p class="contact-title">Birthday</p>
+              <p class="contact-title">Дата рождения</p>
 
-              <time datetime="1982-06-23">2 March, 2003</time>
+              <time datetime="{{ person.birth_date | date }}">{{ person.birth_date | date }}</time>
             </div>
 
           </li>
@@ -114,9 +114,9 @@
             </div>
 
             <div class="contact-info">
-              <p class="contact-title">Location</p>
+              <p class="contact-title">Местоположение</p>
 
-              <address>Pune, India</address>
+              <address>{{ person.location }}</address>
             </div>
 
           </li>
@@ -128,14 +128,14 @@
         <ul class="social-list">
 
           <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
+            <a href="https://vk.com/1suss" class="social-link">
+              <ion-icon name="logo-vk"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
+            <a href="https://t.me/i5uss" class="social-link">
+              <ion-icon name="paper-plane"></ion-icon>
             </a>
           </li>
 
@@ -170,23 +170,23 @@
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
+            <button class="navbar-link active" data-nav-link data-page="about">Обо мне</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
+            <button class="navbar-link" data-nav-link data-page="resume">Резюме</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
+            <button class="navbar-link" data-nav-link data-page="portfolio">Портфолио</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
+            <button class="navbar-link" data-nav-link data-page="blog">Блог</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
+            <button class="navbar-link" data-nav-link data-page="contact">Связаться</button>
           </li>
 
         </ul>
@@ -204,22 +204,22 @@
       <article class="about  active" data-page="about">
 
         <header>
-          <h2 class="h2 article-title">About me</h2>
+          <h2 class="h2 article-title">Обо мне</h2>
         </header>
 
         <section class="about-text">
           <p>
-            I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media.
-            I enjoy
-            turning complex problems into simple, beautiful and intuitive designs.
+            Я являюсь бекенд-разработчиком из Москвы, специализирующимся на создании веб-сайтов. 
+            Моя работа заключается в том, чтобы превращать сложные задачи в простые, эффективные 
+            и интуитивно понятные решения.
           </p>
 
           <p>
-            My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-            Moreover, I
-            add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
-            across your
-            message and identity in the most creative way. I created web design for many famous brand companies.
+            Моя основная задача — разработка сайтов, которые не только функциональны и удобны для пользователя, 
+            но также обеспечивают высокую производительность, надежность и безопасность. 
+            Я стремлюсь реализоваь Ваши идеи с максимальной креативностью и профессионализмом. 
+            Совершенство в каждом проекте, индивидуальные решения, которые соответствуют вашим уникальным 
+            требованиям и целям — это стандарт моей работы.
           </p>
         </section>
 
@@ -230,22 +230,22 @@
 
         <section class="service">
 
-          <h3 class="h3 service-title">What i'm doing</h3>
+          <h3 class="h3 service-title">Чем я занимаюсь</h3>
 
           <ul class="service-list">
 
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./static/images/icon-design.svg
+                <img src="./static/images/icon-server.svg
                 " alt="design icon" width="40">
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web design</h4>
+                <h4 class="h4 service-item-title">Game Servers</h4>
 
                 <p class="service-item-text">
-                  The most modern and high-quality design made at a professional level.
+                  Создание, настройка и поддержка, менеджмент игровых серверов и проектов.
                 </p>
               </div>
 
@@ -254,14 +254,14 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./static/images/icon-dev.svg" alt="Web development icon" width="40">
+                <img src="./static/images/icon-terminal.svg" alt="Web development icon" width="40">
               </div>
 
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Web development</h4>
 
                 <p class="service-item-text">
-                  High-quality development of sites at the professional level.
+                  Разработка сайтов любой сложности.
                 </p>
               </div>
 
@@ -270,14 +270,14 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./static/images/icon-app.svg" alt="mobile app icon" width="40">
+                <img src="./static/images/icon-controller.svg" alt="mobile app icon" width="40">
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Mobile apps</h4>
+                <h4 class="h4 service-item-title">Game Development</h4>
 
                 <p class="service-item-text">
-                  Professional development of applications for iOS and Android.
+                  Разработка компонентов игр и игрового контента.
                 </p>
               </div>
 
@@ -286,14 +286,14 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./static/images/icon-photo.svg" alt="camera icon" width="40">
+                <img src="./static/images/icon-cube.svg" alt="camera icon" width="40">
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Photography</h4>
+                <h4 class="h4 service-item-title">3D Modeling</h4>
 
                 <p class="service-item-text">
-                  I make high-quality photos of any category at a professional level.
+                  Создаю 3D модели, сцены, анимацию. Проектирую модели для печати.
                 </p>
               </div>
 
@@ -310,7 +310,7 @@
 
         <section class="testimonials">
 
-          <h3 class="h3 testimonials-title">Testimonials</h3>
+          <h3 class="h3 testimonials-title">Отзывы</h3> 
 
           <ul class="testimonials-list has-scrollbar">
 

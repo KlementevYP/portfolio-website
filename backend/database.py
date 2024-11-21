@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy.orm import DeclarativeBase, relationship
+from sqlalchemy import Column, Integer, String, Date, Interval, ForeignKey
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./data.db"
+SQLALCHEMY_DATABASE_URL = "sqlite:///F:/WindsurfProjects/portfolio-website/data.db"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
@@ -21,6 +21,8 @@ class Person(Base):
     email = Column(String)
     phone = Column(String)
     birth_date = Column(Date)
+    login = Column(String)
+    password = Column(String)
 
 class About(Base):
     __tablename__ = "about"
@@ -47,6 +49,7 @@ class Resume(Base):
     id = Column(Integer, primary_key=True, index=True)
     educations = relationship("Education", back_populates="resume")
     experiences = relationship("Experience", back_populates="resume")
+    skills = relationship("Skill", back_populates="resume")
 
 class Education(Base):
     __tablename__ = "education"
@@ -67,6 +70,36 @@ class Experience(Base):
     interval = Column(Interval)
     resume_id = Column(Integer, ForeignKey("resume.id"))
     resume = relationship("Resume", back_populates="experiences")
+
+class Skill(Base):
+    __tablename__ = "skill"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    level = Column(String)
+    resume_id = Column(Integer, ForeignKey("resume.id"))
+    resume = relationship("Resume", back_populates="skills")
+
+class PortfolioProjects(Base):
+    __tablename__ = "portfolio_projects"
+ 
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    tag = Column(String)
+    publish_date = Column(Date)
+    text = Column(String)
+    image = Column(String)
+
+class Blog(Base):
+    __tablename__ = "blog"
+ 
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    description = Column(String)
+    tag = Column(String)
+    publish_date = Column(Date)
+    text = Column(String)
+    image = Column(String)
 
 try:
     Base.metadata.create_all(bind=engine)
