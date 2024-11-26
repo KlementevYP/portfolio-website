@@ -53,6 +53,11 @@ async def read_index(request: Request):
 
     return templates.TemplateResponse("index.html", context)
 
+
+@app.get('/edit')
+async def edit_page(request: Request):
+    return templates.TemplateResponse("edit_info.html", {"request": request})
+
 # @app.get("/create-person", response_class=HTMLResponse)
 # async def create_person_form(request: Request):
 #     return templates.TemplateResponse("create_person.html", {"request": request})
