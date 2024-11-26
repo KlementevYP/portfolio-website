@@ -9,7 +9,7 @@ from datetime import datetime, date
 from babel.dates import format_date
 
 app = FastAPI()
-templates = Jinja2Templates(directory='../')
+templates = Jinja2Templates(directory='../templates/')
 app.mount('/static', StaticFiles(directory='../assets'), name='static')
 
 def format_date_ru(value: date, format: str = "long"):
