@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
 .edit-container {
     background: var(--eerie-black-2);
     border: 1px solid var(--jet);
@@ -45,6 +47,16 @@
     border: 1px solid var(--jet);
     border-radius: 14px;
     outline: none;
+}
+
+.nav-button:hover {
+    color: var(--eerie-black-2);
+    background-color: #FFCC67;
+    font-family: "Archivo", sans-serif;
+}
+
+.nav-button {
+    transition: all 0.3s ease-in-out;
 }
 
 .arrow{
