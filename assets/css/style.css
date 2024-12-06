@@ -126,6 +126,10 @@
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none;
+}
+
 a { text-decoration: none; }
 
 li { list-style: none; }
@@ -747,12 +751,14 @@ main {
 .clients-item {
   min-width: 50%;
   scroll-snap-align: start;
+  align-self: center;
 }
 
 .clients-item img {
   width: 100%;
   filter: grayscale(1);
   transition: var(--transition-1);
+  max-height: 100px;
 }
 
 .clients-item img:hover { filter: grayscale(0); }
