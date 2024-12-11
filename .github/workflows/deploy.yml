@@ -1,0 +1,26 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main  # или другой основной branch, если вы используете другой
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Шаг 1: Проверить код из репозитория
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Шаг 2: Настроить SSH доступ
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # Шаг 3: Выполнить команды для деплоя на сервер
+      - name: Deploy to Server
+        run: |
+          ssh -o StrictHostKeyChecking=no deploy@5.181.109.142 "cd /var/www/portfolio-website && git pull origin main && sudo systemctl restart portfolio-website"
